@@ -4,38 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400&display=swap" rel="stylesheet">
-    <title>Encriptador</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/imgs/logo.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Encryptador de Texto</title>
 </head>
 <body>
-    <header>
-        <img class="logo" src="imagenes/logo.png" alt="logo de alura" >
-    </header>
-    <main>
-        <section class="flex-item-left">
-            <textarea class="text-area" id="texto-para-encriptar" cols="30" rows="10" placeholder="Ingrese el texto aqui"></textarea>
-            <div>
-                <h6 class="informacion"><img src="imagenes/signo.png"> Solo letras minúsculas y sin acentos</h6>
+    <main class="container">
+        <header class="logo">
+          <h1>
+            <img src="./imagenes/logo.svg" alt="Logo Alura" />
+          </h1>
+        </header>
+        <section class="message">
+          <div class="textarea-container">
+            <textarea
+              class="input-message"
+              placeholder="Ingrese el texto aquí"
+              onkeydown="handleInput()"></textarea>
+            <button onclick="cleanText()" class="clean button">
+              <img src="./imagenes/trash.svg" alt="Icono de una papelera" />
+            </button>
+          </div>
+  
+          <div class="buttons-container">
+            <div class="warning">
+              <img src="./imagenes/info.svg" alt="Info icon" />
+              <p class="warn-msg">Sólo letras minúsculas y sin acentos</p>
             </div>
-            <div class="botones">
-                <button class="btn-encriptar" id="boton-encriptar" onclick="encriptar()">Encriptar</button>
-                <button class="btn-desencriptar" onclick="desencriptar()">Desencriptar</button>
+            <div class="buttons">
+              <button onclick="processMsg()" class="encrypt button">Encriptar</button>
+              <button onclick="processMsg('decrypt')" class="decrypt button light-blue">
+                Desencriptar
+              </button>
             </div>
+          </div>
         </section>
-        <section class="flex-item-right area-descifrado">
-            <img id="img-descifrado" src="imagenes/dibujo.png">
-            <p id="mensaje-no-encontrado">Ningún mensaje fue encontrado</p>
-            <p id="mensaje-ingresa-texto">Ingresa el texto que desees encriptar o desencriptar.</p>
-            <textarea id="texto-para-desencriptar" cols="20" rows="10" readonly></textarea>
-            <div class="area-copiar">
-                <button class="copiar" id="copiar" onclick="copiar()">Copiar</button>
-            </div>
+        <section id="output" class="encrypted-container">
+          <div class="encrypted-empty show">
+            <img
+              class="search-img"
+              src="./imagenes/search-img.svg"
+              alt="Imagen de lupa" />
+            <p class="message-title">Ningún mensaje fue encontrado</p>
+            <p class="message-text">
+              Ingresa el texto que desees encriptar o desencriptar.
+            </p>
+          </div>
+          <div class="output-message">
+            <div class="crypted-message" placeholder="Mensaje encriptado" readonly></div>
+            <button onclick="copyMsg()" class="copy button light-blue">Copiar</button>
+          </div>
         </section>
-    </main>
-<script src="encriptador.js">
-</script>
+      </main>
+      <script src="./script.js"></script>
 </body>
 </html>
